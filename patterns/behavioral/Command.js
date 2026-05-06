@@ -1,4 +1,3 @@
-// The Invoker class
 class CommandInvoker {
     constructor() {
         this.history = [];
@@ -17,17 +16,16 @@ class CommandInvoker {
     }
 }
 
-// The Command interface (conceptual in JS)
 class Command {
     execute() {
         throw new Error("Execute method must be implemented.");
     }
+
     undo() {
         throw new Error("Undo method must be implemented.");
     }
 }
 
-// Concrete Command for adding a product to the cart
 class AddToCartCommand extends Command {
     constructor(cartService, product) {
         super();
@@ -36,14 +34,11 @@ class AddToCartCommand extends Command {
     }
 
     execute() {
-        // TODO: Implement the execute method.
-        // It should call the `addProduct` method of the `cartService`.
+        this.cartService.addProduct(this.product);
     }
 
     undo() {
-        // TODO: Implement the undo method.
-        // It should call the `removeProduct` method of the `cartService`,
-        // using the product's ID.
+        this.cartService.removeProduct(this.product.id);
     }
 }
 

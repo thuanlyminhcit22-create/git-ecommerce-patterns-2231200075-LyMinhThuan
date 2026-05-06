@@ -13,37 +13,35 @@ class ProductDecorator {
     }
 }
 
-// Concrete Decorator for Gift Wrapping
 class GiftWrapDecorator extends ProductDecorator {
     constructor(product) {
         super(product);
     }
 
     getPrice() {
-        // TODO: Return the product's original price + a $5 gift wrap fee.
+        return this.product.getPrice() + 5;
     }
 
     getDescription() {
-        // TODO: Return the product's original description + ", gift wrapped".
+        return this.product.getDescription() + ", gift wrapped";
     }
 }
 
-// Concrete Decorator for Extended Warranty
 class ExtendedWarrantyDecorator extends ProductDecorator {
     constructor(product) {
         super(product);
     }
 
     getPrice() {
-        // TODO: Return the product's original price + a $20 warranty fee.
+        return this.product.getPrice() + 20;
     }
 
     getDescription() {
-        // TODO: Return the product's original description + ", with extended warranty".
+        return this.product.getDescription() + ", with extended warranty";
     }
 }
 
-// We need a base Product class with the same interface to decorate it
+// Base Product
 class BaseProduct {
     constructor(name, price) {
         this._name = name;
